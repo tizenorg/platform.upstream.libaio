@@ -12,7 +12,15 @@
 #include <libaio.h>
 
 #if __LP64__ == 0
+#if defined(__i386__) || defined(__pwoerpc__) || defined(__mips__)
 #define KERNEL_RW_POINTER	((void *)0xc0010000)
+#elif defined(__arm__) || defined(__m68k__) || defined(__s390__)
+#define KERNEL_RW_POINTER	((void *)0x00010000)
+#elif defined(__hppa__)
+#define KERNEL_RW_POINTER	((void *)0x10100000)
+#elif defined(__sparc__)
+#define KERNEL_RW_POINTER	((void *)0xf0010000)
+#endif
 #else
 //#warning Not really sure where kernel memory is.  Guessing.
 #define KERNEL_RW_POINTER	((void *)0xffffffff81000000)
