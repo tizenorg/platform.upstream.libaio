@@ -3,7 +3,7 @@ includedir=$(prefix)/include
 libdir=$(prefix)/lib
 
 CFLAGS ?= -g -fomit-frame-pointer -O2
-CFLAGS += -nostdlib -nostartfiles -Wall -I. -fPIC
+CFLAGS += -nostdlib -nostartfiles -Wall -I. -fPIC $(OPTFLAGS)
 SO_CFLAGS=-shared $(CFLAGS)
 L_CFLAGS=$(CFLAGS)
 LINK_FLAGS=
