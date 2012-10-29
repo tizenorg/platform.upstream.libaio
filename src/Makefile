@@ -1,6 +1,8 @@
+DESTDIR=
 prefix=/usr
 includedir=$(prefix)/include
 libdir=$(prefix)/lib
+libdevdir=$(prefix)/lib
 
 CFLAGS ?= -g -fomit-frame-pointer -O2
 CFLAGS += -nostdlib -nostartfiles -Wall -I. -fPIC
@@ -53,11 +55,11 @@ $(libname): $(libaio_sobjs) libaio.map
 	$(CC) $(SO_CFLAGS) -Wl,--version-script=libaio.map -Wl,-soname=$(soname) -o $@ $(libaio_sobjs) $(LINK_FLAGS)
 
 install: $(all_targets)
-	install -D -m 644 libaio.h $(includedir)/libaio.h
-	install -D -m 644 libaio.a $(libdir)/libaio.a
-	install -D -m 755 $(libname) $(libdir)/$(libname)
-	ln -sf $(libname) $(libdir)/$(soname)
-	ln -sf $(libname) $(libdir)/libaio.so
+	install -D -m 644 libaio.h $(DESTDIR)$(includedir)/libaio.h
+	install -D -m 644 libaio.a $(DESTDIR)$(libdevdir)/libaio.a
+	install -D -m 755 $(libname) $(DESTDIR)$(libdir)/$(libname)
+	ln -sf $(libdir)/$(libname) $(DESTDIR)$(libdir)/$(soname)
+	ln -sf $(libdir)/$(libname) $(DESTDIR)$(libdevdir)/libaio.so
 
 $(libaio_objs): libaio.h
 

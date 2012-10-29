@@ -5,9 +5,11 @@ RELEASE=$(shell awk '/Release:/ { print $$2 }' $(SPECFILE))
 CVSTAG = $(NAME)_$(subst .,-,$(VERSION))_$(subst .,-,$(RELEASE))
 RPMBUILD=$(shell `which rpmbuild >&/dev/null` && echo "rpmbuild" || echo "rpm")
 
+DESTDIR=
 prefix=/usr
 includedir=$(prefix)/include
 libdir=$(prefix)/lib
+libdevdir=$(prefix)/lib
 
 default: all
 
@@ -15,7 +17,12 @@ all:
 	@$(MAKE) -C src
 
 install:
-	@$(MAKE) -C src install prefix=$(prefix) includedir=$(includedir) libdir=$(libdir)
+	@$(MAKE) -C src install \
+	  DESTDIR=$(DESTDIR) \
+	  prefix=$(prefix) \
+	  includedir=$(includedir) \
+	  libdir=$(libdir) \
+	  libdevdir=$(libdevdir)
 
 check:
 	@$(MAKE) -C harness check
