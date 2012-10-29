@@ -6,7 +6,7 @@ ARCH := $(shell uname -m | sed -e s/i.86/i386/)
 CFLAGS := -nostdlib -nostartfiles -Wall -I. -g -fomit-frame-pointer -O2 -fPIC $(OPTFLAGS)
 SO_CFLAGS=-shared $(CFLAGS)
 L_CFLAGS=$(CFLAGS)
-LINK_FLAGS=
+LINK_FLAGS := -lgcc
 
 soname=libaio.so.1
 minor=0
