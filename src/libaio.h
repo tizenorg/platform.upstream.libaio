@@ -83,6 +83,30 @@ typedef enum io_iocb_cmd {
 #define PADDEDptr(x, y)	x; unsigned y
 #define PADDEDul(x, y)	unsigned long x; unsigned y
 #  endif
+#elif defined(__m68k__) /* big endian, 32 bits */
+#define PADDED(x, y)	unsigned y; x
+#define PADDEDptr(x, y)	unsigned y; x
+#define PADDEDul(x, y)	unsigned y; unsigned long x
+#elif defined(__sparc__) /* big endian, 32 bits */
+#define PADDED(x, y)	unsigned y; x
+#define PADDEDptr(x, y)	unsigned y; x
+#define PADDEDul(x, y)	unsigned y; unsigned long x
+#elif defined(__hppa__) /* big endian, 32 bits */
+#define PADDED(x, y)	unsigned y; x
+#define PADDEDptr(x, y)	unsigned y; x
+#define PADDEDul(x, y)	unsigned y; unsigned long x
+#elif defined(__mips__)
+#  if defined (__MIPSEB__) /* big endian, 32 bits */
+#define PADDED(x, y)	unsigned y; x
+#define PADDEDptr(x, y)	unsigned y; x
+#define PADDEDul(x, y)	unsigned y; unsigned long x
+#  elif defined(__MIPSEL__) /* little endian, 32 bits */
+#define PADDED(x, y)	x; unsigned y
+#define PADDEDptr(x, y)	x; unsigned y
+#define PADDEDul(x, y)	unsigned long x; unsigned y
+#  else
+#    error "neither mipseb nor mipsel?"
+#  endif
 #else
 #error	endian?
 #endif

@@ -24,6 +24,14 @@
 #include "syscall-alpha.h"
 #elif defined(__arm__)
 #include "syscall-arm.h"
+#elif defined(__m68k__)
+#include "syscall-m68k.h"
+#elif defined(__sparc__)
+#include "syscall-sparc.h"
+#elif defined(__hppa__)
+#include "syscall-parisc.h"
+#elif defined(__mips__)
+#include "syscall-mips.h"
 #else
 #error "add syscall-arch.h"
 #endif
