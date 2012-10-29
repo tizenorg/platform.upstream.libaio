@@ -6,7 +6,7 @@ CFLAGS ?= -g -fomit-frame-pointer -O2
 CFLAGS += -nostdlib -nostartfiles -Wall -I. -fPIC
 SO_CFLAGS=-shared $(CFLAGS)
 L_CFLAGS=$(CFLAGS)
-LINK_FLAGS=
+LINK_FLAGS= -lgcc
 LINK_FLAGS+=$(LDFLAGS)
 
 soname=libaio.so.1
