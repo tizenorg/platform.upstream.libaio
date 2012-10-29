@@ -1,4 +1,4 @@
-.TH io_submit 2 2002-09-02 "Linux 2.4" "Linux AIO"
+.TH io_submit 2 2009-06-10 "Linux 2.4" "Linux AIO"
 .SH NAME
 io_submit \- submit io requests
 .SH SYNOPSIS
@@ -44,7 +44,7 @@ callback function.
 .I aio_lio_opcode
 is the I/O operation requested.  Callers will typically set this and the
 arguments to the I/O operation calling the
-.BR io_prep_ (3)
+.BR io_prep_ *(3)
 function corresponding to the operation.
 .sp
 .I aio_reqprio
@@ -106,4 +106,4 @@ Insufficient resources were available to queue any operations.
 .BR io_prep_fdsync (3),
 .BR io_prep_noop (3),
 .BR io_cancel (2),
-.BR errno (3)
+.BR errno (3).

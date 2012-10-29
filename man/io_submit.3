@@ -1,16 +1,16 @@
-./"/* sys_io_submit:
-./" *      Queue the nr iocbs pointed to by iocbpp for processing.  Returns
-./" *      the number of iocbs queued.  May return -EINVAL if the aio_context
-./" *      specified by ctx_id is invalid, if nr is < 0, if the iocb at
-./" *      *iocbpp[0] is not properly initialized, if the operation specified
-./" *      is invalid for the file descriptor in the iocb.  May fail with
-./" *      -EFAULT if any of the data structures point to invalid data.  May
-./" *      fail with -EBADF if the file descriptor specified in the first
-./" *      iocb is invalid.  May fail with -EAGAIN if insufficient resources
-./" *      are available to queue any iocbs.  Will return 0 if nr is 0.  Will
-./" *      fail with -ENOSYS if not implemented.
-./" */
-.TH io_submit 2 2002-09-02 "Linux 2.4" "Linux AIO"
+.\"/* sys_io_submit:
+.\" *      Queue the nr iocbs pointed to by iocbpp for processing.  Returns
+.\" *      the number of iocbs queued.  May return -EINVAL if the aio_context
+.\" *      specified by ctx_id is invalid, if nr is < 0, if the iocb at
+.\" *      *iocbpp[0] is not properly initialized, if the operation specified
+.\" *      is invalid for the file descriptor in the iocb.  May fail with
+.\" *      -EFAULT if any of the data structures point to invalid data.  May
+.\" *      fail with -EBADF if the file descriptor specified in the first
+.\" *      iocb is invalid.  May fail with -EAGAIN if insufficient resources
+.\" *      are available to queue any iocbs.  Will return 0 if nr is 0.  Will
+.\" *      fail with -ENOSYS if not implemented.
+.\" */
+.TH io_submit 2 2009-06-10 "Linux 2.4" "Linux AIO"
 .SH NAME
 io_submit \- Submit io requests
 .SH SYNOPSIS
@@ -49,12 +49,12 @@ gets the
 .IR "nr"
 requests from the array pointed to
 by 
-.IR "iocbs"
-.  The operation to be performed is determined by the
+.IR "iocbs" .
+The operation to be performed is determined by the
 .IR "aio_lio_opcode"
 member in each element of 
-.IR "iocbs"
-.  If this
+.IR "iocbs" .
+If this
 field is 
 .B "IO_CMD_PREAD"
 a read operation is enqueued, similar to a call
@@ -120,16 +120,16 @@ The iocb contains a file descriptor that does not exist.
 .B EINVAL
 The file specified in the iocb does not support the given io operation.
 .SH "SEE ALSO"
-.BR io(3),
-.BR io_cancel(3),
-.BR io_fsync(3),
-.BR io_getevents(3),
-.BR io_prep_fsync(3),
-.BR io_prep_pread(3),
-.BR io_prep_pwrite(3),
-.BR io_queue_init(3),
-.BR io_queue_release(3),
-.BR io_queue_run(3),
-.BR io_queue_wait(3),
-.BR io_set_callback(3),
-.BR errno(3)
+.BR io (3),
+.BR io_cancel (3),
+.BR io_fsync (3),
+.BR io_getevents (3),
+.BR io_prep_fsync (3),
+.BR io_prep_pread (3),
+.BR io_prep_pwrite (3),
+.BR io_queue_init (3),
+.BR io_queue_release (3),
+.BR io_queue_run (3),
+.BR io_queue_wait (3),
+.BR io_set_callback (3),
+.BR errno (3).

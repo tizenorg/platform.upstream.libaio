@@ -1,4 +1,4 @@
-.TH io_cancel 2 2002-09-03 "Linux 2.4" "Linux AIO"
+.TH io_cancel 2 2009-06-10 "Linux 2.4" "Linux AIO"
 .SH NAME
 io_cancel \- Cancel io requests
 .SH SYNOPSIS
@@ -9,7 +9,7 @@ io_cancel \- Cancel io requests
 .B #include <libaio.h>
 .sp
 .br
-.BI "int io_cancel(io_context_t ctx, struct iocb *iocb)"
+.BI "int io_cancel(io_context_t " ctx ", struct iocb *" iocb ");"
 .br
 .sp
 struct iocb {
@@ -33,7 +33,7 @@ have to be overwritten soon.  As an example, assume an application, which
 writes data in files in a situation where new incoming data would have
 to be written in a file which will be updated by an enqueued request.
 .SH "RETURN VALUES"
-0 is returned on success , otherwise returns Errno.
+\fI0\fP is returned on success, otherwise returns \fIerrno\fP.
 .SH ERRORS
 .TP
 .B EFAULT 
@@ -44,22 +44,22 @@ If aio_context specified by ctx_id is
 invalid.  
 .TP
 .B EAGAIN
-If the iocb specified was not
+If the \fIiocb\fP specified was not
 cancelled.  
 .TP
 .B ENOSYS 
-if not implemented.
+If not implemented.
 .SH "SEE ALSO"
-.BR io(3),
-.BR io_fsync(3),
-.BR io_getevents(3),
-.BR io_prep_fsync(3),
-.BR io_prep_pread(3),
-.BR io_prep_pwrite(3),
-.BR io_queue_init(3),
-.BR io_queue_release(3),
-.BR io_queue_run(3),
-.BR io_queue_wait(3),
-.BR io_set_callback(3),
-.BR io_submit(3),
-.BR errno(3)
+.BR io (3),
+.BR io_fsync (3),
+.BR io_getevents (3),
+.BR io_prep_fsync (3),
+.BR io_prep_pread (3),
+.BR io_prep_pwrite (3),
+.BR io_queue_init (3),
+.BR io_queue_release (3),
+.BR io_queue_run (3),
+.BR io_queue_wait (3),
+.BR io_set_callback (3),
+.BR io_submit (3),
+.BR errno (3).
