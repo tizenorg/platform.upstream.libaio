@@ -1,0 +1,3 @@
+* Wed Feb 20 2013 Anas Nashif <anas.nashif@intel.com> upstream/0.3.109@c5098b3
+- Fixed library name in baselibs.conf
+
