@@ -3,7 +3,7 @@ Version:        0.3.109
 Release:        0
 Summary:        Linux-Native Asynchronous I/O Access Library
 License:        LGPL-2.1+
-Group:          Development/Libraries/C and C++
+Group:          Development/Libraries
 Url:            http://kernel.org/pub/linux/libs/aio/
 Source:         libaio-%{version}.tar.bz2
 Source2:        baselibs.conf
@@ -53,7 +53,7 @@ ln -fs "${t#%buildroot}" "%buildroot/%_libdir/libaio.so"
 
 %files 
 %defattr(644,root,root,755)
-%doc COPYING
+%license COPYING
 %attr(0755,root,root) /%{_lib}/libaio.*
 
 %files devel
