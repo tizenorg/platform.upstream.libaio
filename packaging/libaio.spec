@@ -7,6 +7,7 @@ Group:          Development/Libraries
 Url:            http://kernel.org/pub/linux/libs/aio/
 Source:         libaio-%{version}.tar.bz2
 Source2:        baselibs.conf
+Source1001: 	libaio.manifest
 
 %description
 The Linux-native asynchronous I/O facility ("async I/O", or "aio") has
@@ -31,6 +32,7 @@ with, for the Linux-native asynchronous I/O facility ("async I/O", or
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 make %{?_smp_mflags} CC="%__cc" OPTFLAGS="$RPM_OPT_FLAGS"
@@ -52,11 +54,13 @@ ln -fs "${t#%buildroot}" "%buildroot/%_libdir/libaio.so"
 %postun  -p /sbin/ldconfig
 
 %files 
+%manifest %{name}.manifest
 %defattr(644,root,root,755)
 %license COPYING
 %attr(0755,root,root) /%{_lib}/libaio.*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(644,root,root,755)
 /usr/include/libaio.h
 %_libdir/libaio.so
