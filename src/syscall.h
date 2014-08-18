@@ -24,6 +24,11 @@
 #include "syscall-alpha.h"
 #elif defined(__arm__)
 #include "syscall-arm.h"
+#elif defined(__sparc__)
+#include "syscall-sparc.h"
+#elif defined(__aarch64__)
+#include "syscall-arm64.h"
 #else
-#error "add syscall-arch.h"
+#warning "using generic syscall method"
+#include "syscall-generic.h"
 #endif
