@@ -9,6 +9,10 @@ Source:         libaio-%{version}.tar.bz2
 Source2:        baselibs.conf
 Source1001: 	libaio.manifest
 
+%if ! %{?license:0}
+%define license %doc
+%endif
+
 %description
 The Linux-native asynchronous I/O facility ("async I/O", or "aio") has
 a richer API and capability set than the simple POSIX async I/O
